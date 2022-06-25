@@ -1,5 +1,4 @@
 import 'package:article_finder/bloc/article_detail_bloc.dart';
-import 'package:article_finder/bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
 import '../bloc/bloc_provider.dart';
@@ -17,9 +16,12 @@ class ArticleDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Articles detail'),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        child: _buildContent(bloc),
+      body: RefreshIndicator(
+        onRefresh: bloc.refresh,
+        child: Container(
+          alignment: Alignment.center,
+          child: _buildContent(bloc),
+        ),
       ),
     );
   }

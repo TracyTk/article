@@ -28,4 +28,10 @@ class ArticleDetailBloc implements Bloc {
   void dispose() {
     _refreshController.close();
   }
+
+  Future refresh() {
+    final future = articleStream.first;
+    _refreshController.sink.add({});
+    return future;
+  }
 }
